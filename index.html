@@ -230,6 +230,65 @@
             border: 1px solid var(--border);
         }
 
+        .qr-modal-shortcuts {
+            margin-top: 1.2rem;
+            padding-top: 1.1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .qr-shortcuts-label {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.3px;
+            margin-bottom: 0.8rem;
+        }
+
+        .qr-shortcuts-icons {
+            display: flex;
+            justify-content: center;
+            gap: 0.7rem;
+        }
+
+        .qr-shortcut-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.35rem;
+            background: none;
+            border: none;
+            font-family: inherit;
+            cursor: pointer;
+            padding: 0;
+            width: 72px;
+        }
+
+        .qr-shortcut-emoji {
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            border-radius: 14px;
+            box-shadow: 0 4px 12px rgba(229, 138, 44, 0.25);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .qr-shortcut-icon:hover .qr-shortcut-emoji {
+            transform: translateY(-3px) scale(1.06);
+            box-shadow: 0 6px 16px rgba(229, 138, 44, 0.35);
+        }
+
+        .qr-shortcut-text {
+            font-size: 0.68rem;
+            color: var(--text-body);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
         .qr-modal-close {
             margin-top: 1.2rem;
             display: block;
@@ -1355,12 +1414,12 @@
                 <li><a href="#about">關於醫師</a></li>
                 <li><a href="#contact">聯絡資訊</a></li>
             </ul>
-            <button class="qr-btn" id="qrBtn" aria-label="掃描 QR Code">
+            <button class="qr-btn" id="qrBtn" aria-label="快速選單">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/>
                     <rect x="14" y="14" width="3" height="3" rx="0.5"/><rect x="18" y="14" width="3" height="3" rx="0.5"/><rect x="14" y="18" width="3" height="3" rx="0.5"/><rect x="18" y="18" width="3" height="3" rx="0.5"/>
                 </svg>
-                <span>掃碼</span>
+                <span>快速選單</span>
             </button>
         </div>
     </nav>
@@ -1371,6 +1430,23 @@
             <h3>掃描 QR Code</h3>
             <p>用手機掃描，立即開啟本網站</p>
             <img src="網站QRcode.jpg" alt="網站 QR Code">
+            <div class="qr-modal-shortcuts">
+                <span class="qr-shortcuts-label">🔥 熱門工具</span>
+                <div class="qr-shortcuts-icons">
+                    <button class="qr-shortcut-icon" onclick="closeQrModal(); openToolModal('tools.html?solo=1#potassium-tool', '食物鉀含量查詢')" title="食物鉀含量查詢" aria-label="食物鉀含量查詢">
+                        <span class="qr-shortcut-emoji">🥬</span>
+                        <span class="qr-shortcut-text">鉀含量查詢</span>
+                    </button>
+                    <button class="qr-shortcut-icon" onclick="closeQrModal(); openToolModal('potassium-scanner.html', '鉀離子掃描器')" title="鉀離子掃描器" aria-label="鉀離子掃描器">
+                        <span class="qr-shortcut-emoji">📷</span>
+                        <span class="qr-shortcut-text">鉀離子掃描</span>
+                    </button>
+                    <button class="qr-shortcut-icon" onclick="closeQrModal(); openToolModal('phosphorus-scanner.html', '磷含量掃描器')" title="磷含量掃描器" aria-label="磷含量掃描器">
+                        <span class="qr-shortcut-emoji">🦴</span>
+                        <span class="qr-shortcut-text">磷含量掃描</span>
+                    </button>
+                </div>
+            </div>
             <button class="qr-modal-close" id="qrModalClose">關閉</button>
         </div>
     </div>
@@ -1789,16 +1865,15 @@
             document.body.style.overflow = 'hidden';
         });
 
-        qrModalClose.addEventListener('click', () => {
+        function closeQrModal() {
             qrModal.classList.remove('active');
             document.body.style.overflow = '';
-        });
+        }
+
+        qrModalClose.addEventListener('click', closeQrModal);
 
         qrModal.addEventListener('click', (e) => {
-            if (e.target === qrModal) {
-                qrModal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
+            if (e.target === qrModal) closeQrModal();
         });
 
         // Mobile Hamburger Menu
