@@ -317,7 +317,6 @@
 
         .hero-content {
             animation: fadeInUp 0.8s ease-out;
-            padding-right: 290px;
         }
 
         @keyframes fadeInUp {
@@ -398,106 +397,6 @@
         .btn-secondary:hover {
             border-color: var(--primary);
             background: var(--bg-light);
-        }
-
-        /* Hero Quick Tools (top-right shortcut to popular tools) */
-        .hero-quick-tools {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            z-index: 2;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 1rem 1.1rem 0.9rem;
-            box-shadow: var(--shadow-lg);
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .hqt-label {
-            display: block;
-            font-size: 0.72rem;
-            font-weight: 700;
-            color: var(--accent);
-            letter-spacing: 0.3px;
-            margin-bottom: 0.7rem;
-            text-align: center;
-            white-space: nowrap;
-        }
-
-        .hqt-icons {
-            display: flex;
-            gap: 0.7rem;
-        }
-
-        .hqt-icon {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.35rem;
-            background: none;
-            border: none;
-            font-family: inherit;
-            cursor: pointer;
-            padding: 0;
-            width: 64px;
-        }
-
-        .hqt-emoji {
-            width: 46px;
-            height: 46px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.35rem;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            border-radius: 14px;
-            box-shadow: 0 4px 12px rgba(229, 138, 44, 0.25);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .hqt-icon:hover .hqt-emoji {
-            transform: translateY(-3px) scale(1.06);
-            box-shadow: 0 6px 16px rgba(229, 138, 44, 0.35);
-        }
-
-        .hqt-text {
-            font-size: 0.68rem;
-            color: var(--text-body);
-            font-weight: 600;
-            text-align: center;
-            line-height: 1.3;
-        }
-
-        @media (max-width: 1180px) {
-            .hero-quick-tools {
-                position: static;
-                grid-column: 1 / -1;
-                margin: 0.5rem auto 0;
-                width: fit-content;
-                max-width: 100%;
-            }
-
-            .hero-content {
-                padding-right: 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hqt-icon {
-                width: 56px;
-            }
-
-            .hqt-emoji {
-                width: 42px;
-                height: 42px;
-                font-size: 1.2rem;
-            }
-
-            .hqt-text {
-                font-size: 0.62rem;
-            }
         }
 
         /* Section Styling */
@@ -1508,23 +1407,6 @@
                     <a href="#contact" class="btn btn-secondary">
                         <span>💬</span> 聯絡我們
                     </a>
-                </div>
-            </div>
-            <div class="hero-quick-tools">
-                <span class="hqt-label">🔥 熱門工具</span>
-                <div class="hqt-icons">
-                    <button class="hqt-icon" onclick="openToolModal('tools.html?solo=1#potassium-tool', '食物鉀含量查詢')" title="食物鉀含量查詢" aria-label="食物鉀含量查詢">
-                        <span class="hqt-emoji">🥬</span>
-                        <span class="hqt-text">鉀含量查詢</span>
-                    </button>
-                    <button class="hqt-icon" onclick="openToolModal('potassium-scanner.html', '鉀離子掃描器')" title="鉀離子掃描器" aria-label="鉀離子掃描器">
-                        <span class="hqt-emoji">📷</span>
-                        <span class="hqt-text">鉀離子掃描</span>
-                    </button>
-                    <button class="hqt-icon" onclick="openToolModal('phosphorus-scanner.html', '磷含量掃描器')" title="磷含量掃描器" aria-label="磷含量掃描器">
-                        <span class="hqt-emoji">🦴</span>
-                        <span class="hqt-text">磷含量掃描</span>
-                    </button>
                 </div>
             </div>
         </div>
